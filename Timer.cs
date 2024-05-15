@@ -7,7 +7,7 @@ public class Timer
     private float _lastCheckedTimeStamp = 0f;
     private float _timePassed = 0f; //only updated when function calls are made
     private float _timeSpeed = 1f;
-    private bool _paused = false;
+    private bool _paused = true;
 
     public float timeSpeed { get { return _timeSpeed; } }
     public bool paused { get { return _paused; } }
@@ -35,6 +35,16 @@ public class Timer
 
         _lastCheckedTimeStamp = Time.time;
         _paused = false;
+    }
+
+    public void SetPause(bool value)
+    {
+        if (value)
+        {
+            Pause();
+            return;
+        }
+        Unpause();
     }
 
     public void Stop()
